@@ -10,8 +10,15 @@
         }
     ],
     "autoload": {
-        "psr-4": {"Exads\\": "src/"}
+        "psr-4": {
+            "Exads\\": "src/",
+            "ExadsTests\\": "tests/"
+        }
     },
     "require": {
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9",
+        "guzzlehttp/guzzle": "^7.0"
     }
 }

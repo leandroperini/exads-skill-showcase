@@ -18,6 +18,8 @@ services:
     working_dir: /var/www/exads
     environment:
       - NGINX_HOST=exads.local
+    extra_hosts:
+      - 'exads.local:172.0.0.1'
     volumes:
       - ./:/var/www/exads
       - ./docker/nginx/site.conf:/etc/nginx/conf.d/site.conf

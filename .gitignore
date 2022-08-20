@@ -1,4 +1,4 @@
 /vendor/
 /storage/logs/
-
 /.idea/*
+/.phpunit.result.cache

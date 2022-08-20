@@ -3,15 +3,27 @@
 
 namespace Exads;
 
+use Exads\Numbers\Models\Number;
+use Exads\Numbers\Processor;
 
-use Exads\Numbers\Prime;
-
-class PrimesController implements ControllerInterface
+class PrimesController extends AbstractController
 {
 
     public function handle(RequestInterface $request): mixed
     {
-        header('Content-Type: application/json; charset=utf-8');
-        return json_encode(Prime::generatePrimes());
+        $processedNumbers = (new Processor())->findPrimes(1, 100);
+
+        return $this->sendResponse($this->formatNumberDivisorsList($processedNumbers));
+    }
+
+    private function formatNumberDivisorsList(array $processedNumbers): string
+    {
+        /** @var Number $processedNumber */
+        $result = '';
+        foreach ($processedNumbers as $processedNumber) {
+            $result .= $processedNumber . PHP_EOL;
+        }
+
+        return $result;
     }
 }
