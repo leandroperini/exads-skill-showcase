@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Exads;
+namespace Exads\Controllers;
 
 abstract class AbstractController implements ControllerInterface
 {

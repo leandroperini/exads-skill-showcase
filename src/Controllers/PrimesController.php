@@ -1,10 +1,11 @@
 <?php
 
 
-namespace Exads;
+namespace Exads\Controllers;
 
 use Exads\Numbers\Models\Number;
 use Exads\Numbers\Processor;
+use Exads\RequestInterface;
 
 class PrimesController extends AbstractController
 {

@@ -1,8 +1,9 @@
 <?php
 
 
-namespace Exads;
+namespace Exads\Controllers;
 
+use Exads\RequestInterface;
 
 interface ControllerInterface
 {

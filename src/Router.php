@@ -3,6 +3,9 @@
 
 namespace Exads;
 
+use Exads\Controllers\ControllerInterface;
+use Exads\Controllers\PrimesController;
+
 class Router
 {
     private mixed $response = null;
