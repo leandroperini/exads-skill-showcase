@@ -1,0 +1,17 @@
+{
+    "name": "exads/exads",
+    "description": "dev skill showcase",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Leandro Perini",
+            "email": "perini105@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Exads\\": "src/"}
+    },
+    "require": {
+    }
+}

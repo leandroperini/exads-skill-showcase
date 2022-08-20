@@ -1,0 +1,26 @@
+version: "3"
+services:
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    working_dir: /var/www/exads
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./:/var/www/exads
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./storage/logs/exads:/storage/logs/exads
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    working_dir: /var/www/exads
+    environment:
+      - NGINX_HOST=exads.local
+    volumes:
+      - ./:/var/www/exads
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/site.conf
+      - ./storage/logs/nginx/:/storage/logs/nginx/
+    links:
+      - php
