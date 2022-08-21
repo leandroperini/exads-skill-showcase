@@ -3,7 +3,7 @@
 namespace ExadsTests\unit\Numbers;
 
 use Exads\Numbers\Models\Number;
-use Exads\Numbers\Processor;
+use Exads\Numbers\NumberService;
 use ExadsTests\ExadsTestCase;
 
 class ProcessorTest extends ExadsTestCase
@@ -16,7 +16,7 @@ class ProcessorTest extends ExadsTestCase
     {
         $this->assertEquals(
             $isPrime,
-            (new Processor())->isPrime(
+            (new NumberService())->isPrime(
                 new Number($number, false)
             )
         );

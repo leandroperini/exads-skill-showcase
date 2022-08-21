@@ -8,11 +8,15 @@ interface RequestInterface
 {
     public function __construct(
         ?string $uri = null,
-        ?string $query = null,
+        array $query = null,
         ?string $method = null,
     );
 
     public function getUri(): string;
-    public function getQuery(): string;
+
+    public function getQuery(): array;
+
+    public function getQueryParam(string $name, mixed $default = null): mixed;
+
     public function getMethod(): string;
 }

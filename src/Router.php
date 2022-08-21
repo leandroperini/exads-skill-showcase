@@ -3,16 +3,19 @@
 
 namespace Exads;
 
+use Exads\Controllers\AsciiController;
 use Exads\Controllers\ControllerInterface;
 use Exads\Controllers\PrimesController;
+use Exception;
 
 class Router
 {
     private mixed $response = null;
 
-    public function handle(RequestInterface $request): mixed
+    public function route(RequestInterface $request): mixed
     {
         $this->get('/primes', $request, PrimesController::class);
+        $this->get('/ascii', $request, AsciiController::class);
 
 
         return $this->response;
@@ -38,7 +41,11 @@ class Router
     private function processRequest(string $controllerClass, RequestInterface $request): mixed
     {
         $controller = new $controllerClass();
-        if ($this->response === null && $controller instanceof ControllerInterface) {
+        if (!$controller instanceof ControllerInterface) {
+            throw new Exception('Invalid controller type, a ControllerInterface is required');
+        }
+
+        if ($this->response === null) {
             return $controller->handle($request);
         }
 

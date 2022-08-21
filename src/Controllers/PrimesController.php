@@ -4,7 +4,7 @@
 namespace Exads\Controllers;
 
 use Exads\Numbers\Models\Number;
-use Exads\Numbers\Processor;
+use Exads\Numbers\NumberService;
 use Exads\RequestInterface;
 
 class PrimesController extends AbstractController
@@ -12,7 +12,7 @@ class PrimesController extends AbstractController
 
     public function handle(RequestInterface $request): mixed
     {
-        $processedNumbers = (new Processor())->findPrimes(1, 100);
+        $processedNumbers = $this->getNumberService()->findPrimes(1, 100);
 
         return $this->sendResponse($this->formatNumberDivisorsList($processedNumbers));
     }
@@ -26,5 +26,10 @@ class PrimesController extends AbstractController
         }
 
         return $result;
+    }
+
+    private function getNumberService(): NumberService
+    {
+        return new NumberService();
     }
 }

@@ -9,7 +9,7 @@ class Request implements RequestInterface
 
     public function __construct(
         private ?string $uri = null,
-        private ?string $query = null,
+        private ?array $query = null,
         private ?string $method = null,
     ) {
     }
@@ -19,9 +19,9 @@ class Request implements RequestInterface
         return $this->uri ?? '';
     }
 
-    public function getQuery(): string
+    public function getQuery(): array
     {
-        return $this->query ?? '';
+        return $this->query ?? [];
     }
 
     public function getMethod(): string
@@ -29,4 +29,8 @@ class Request implements RequestInterface
         return $this->method ?? '';
     }
 
+    public function getQueryParam(string $name, mixed $default = null): mixed
+    {
+        return $this->getQuery()[$name] ?? $default;
+    }
 }

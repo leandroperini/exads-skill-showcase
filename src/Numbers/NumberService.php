@@ -4,7 +4,7 @@ namespace Exads\Numbers;
 
 use Exads\Numbers\Models\Number;
 
-class Processor
+class NumberService
 {
 
     /**
@@ -60,5 +60,19 @@ class Processor
         }
 
         return $divisors;
+    }
+
+    public function detectMissingElementFromNaturalConsecutiveProgression(
+        array $incompleteProgression, int $firstOriginal, int $lastOriginal
+    ): ?int
+    {
+        $sizeOriginal  = ($lastOriginal - $firstOriginal) + 1;
+
+        $sumElementsOriginal   = (($sizeOriginal / 2) * ($firstOriginal + $lastOriginal));
+        $sumElementsIncomplete = array_sum($incompleteProgression);
+
+        $missing = (int) ($sumElementsOriginal - $sumElementsIncomplete);
+
+        return $missing !== 0 ? $missing : null;
     }
 }
