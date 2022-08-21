@@ -13,3 +13,11 @@ asciiRemove:
 .PHONY: asciiRemoveRandom
 asciiRemoveRandom:
 	docker-compose exec php php /var/www/exads/public/index.php --route /ascii
+
+.PHONY: setupDB
+setupDB:
+	docker-compose exec db sh -c 'exec mysql -uroot -proot < /var/www/exads/storage/sqlScripts/setupDb.sql'
+
+.PHONY: insertInitialData
+insertInitialData: setupDB
+	docker-compose exec db sh -c 'exec mysql -uroot -proot < /var/www/exads/storage/sqlScripts/initialData.sql'

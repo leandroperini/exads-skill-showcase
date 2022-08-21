@@ -41,7 +41,7 @@ class AsciiController extends AbstractController
     private function removeCharFromList(?string $charToRemove, array $chars, ?int &$removedCharCode = null): array
     {
         if ($charToRemove !== null) {
-            $chars = $this->getAsciiService()->removeCharFromList($charToRemove, $chars);
+            $chars           = $this->getAsciiService()->removeCharFromList($charToRemove, $chars);
             $removedCharCode = ord($charToRemove);
         } else {
             $chars = $this->getAsciiService()->removeRandomCharFromList($chars, $removedCharCode);

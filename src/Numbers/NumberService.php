@@ -64,9 +64,8 @@ class NumberService
 
     public function detectMissingElementFromNaturalConsecutiveProgression(
         array $incompleteProgression, int $firstOriginal, int $lastOriginal
-    ): ?int
-    {
-        $sizeOriginal  = ($lastOriginal - $firstOriginal) + 1;
+    ): ?int {
+        $sizeOriginal = ($lastOriginal - $firstOriginal) + 1;
 
         $sumElementsOriginal   = (($sizeOriginal / 2) * ($firstOriginal + $lastOriginal));
         $sumElementsIncomplete = array_sum($incompleteProgression);

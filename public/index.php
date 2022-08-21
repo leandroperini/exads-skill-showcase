@@ -4,17 +4,18 @@ use Exads\Request;
 use Exads\Router;
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../doctrineBootstrap.php';
 
-$uri         = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?: '';
-$queryString = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY) ?: '';
+$uri         = rtrim(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/') ?: '';
+$queryString = parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_QUERY) ?: '';
 
-header_register_callback(static function () {
-    if ($_SERVER['REQUEST_URI'] ?? true) {
-        header_remove();
-    }
-});
 
 if ($uri === '') {
+    header_register_callback(static function () {
+        if ($_SERVER['REQUEST_URI'] ?? true) {
+            header_remove();
+        }
+    });
     $terminalOptions = getopt('r:p:', ['route:', 'params:']);
     $uri             = $terminalOptions['route'] ?? $terminalOptions['r'] ?? '/';
     $queryString     = $terminalOptions['params'] ?? $terminalOptions['p'] ?? '';
