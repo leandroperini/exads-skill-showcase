@@ -6,6 +6,10 @@ start:
 primes:
 	docker-compose exec php php /var/www/exads/public/index.php --route /primes
 
-.PHONY: ascii
-ascii:
+.PHONY: asciiRemove
+asciiRemove:
+	docker-compose exec php php /var/www/exads/public/index.php --route /ascii --params removeChar=$(char)
+
+.PHONY: asciiRemoveRandom
+asciiRemoveRandom:
 	docker-compose exec php php /var/www/exads/public/index.php --route /ascii

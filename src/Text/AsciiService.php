@@ -47,7 +47,7 @@ class AsciiService
 
     public function detectMissingCharFromList(array $chars, string $first, string $last): ?int
     {
-        return $this->numberService->
-        detectMissingElementFromNaturalConsecutiveProgression($chars, ord($first), ord($last));
+        return $this->numberService
+            ->detectMissingElementFromNaturalConsecutiveProgression($chars, ord($first), ord($last));
     }
 }
