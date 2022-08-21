@@ -18,11 +18,20 @@ services:
     working_dir: /var/www/exads
     environment:
       - NGINX_HOST=exads.local
-    extra_hosts:
-      - 'exads.local:172.0.0.1'
     volumes:
       - ./:/var/www/exads
       - ./docker/nginx/site.conf:/etc/nginx/conf.d/site.conf
       - ./storage/logs/nginx/:/storage/logs/nginx/
+    links:
+      - php
+  db:
+    image: mariadb:latest
+    ports:
+      - "33306:3306"
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=exads
+    volumes:
+      - ./:/var/www/exads
     links:
       - php

@@ -5,7 +5,8 @@ use Exads\Router;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-[$uri, $queryString] = array_merge(explode('?', $_SERVER['REQUEST_URI'] ?? null, 2), ['']);
+$uri         = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?: '';
+$queryString = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY) ?: '';
 
 header_register_callback(static function () {
     if ($_SERVER['REQUEST_URI'] ?? true) {
