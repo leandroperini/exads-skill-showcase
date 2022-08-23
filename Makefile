@@ -6,8 +6,13 @@ setupDocker:
 composerInstall:
 	docker-compose exec php composer install
 
+.PHONY: sleep
+sleep:
+	#Waiting to allow starting next command safely
+	sleep 10
+
 .PHONY: setupEnv
-setupEnv: setupDocker setupDB composerInstall
+setupEnv: setupDocker sleep insertInitialData composerInstall
 
 .PHONY: 1
 1:
