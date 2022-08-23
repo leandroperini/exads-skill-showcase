@@ -73,5 +73,11 @@ make 3-now
 **4. A/B Testing**
 
 ```
-make 4
+make 4 promo={promotion id}
+```
+
+Example:
+
+```
+make promo=1
 ```

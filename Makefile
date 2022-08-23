@@ -36,7 +36,7 @@ setupEnv: setupDocker sleep insertInitialData composerInstall
 
 .PHONY: 4
 4:
-	python3 -m webbrowser "http://exads.local:8080/promotions?id={any promotion id}"
+	python3 -m webbrowser "http://exads.local:8080/promotions?id=$(promo)"
 
 .PHONY: setupDB
 setupDB:
