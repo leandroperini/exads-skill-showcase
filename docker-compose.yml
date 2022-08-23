@@ -16,8 +16,6 @@ services:
     ports:
       - "8080:80"
     working_dir: /var/www/exads
-    environment:
-      - NGINX_HOST=exads.local
     volumes:
       - ./:/var/www/exads
       - ./docker/nginx/site.conf:/etc/nginx/conf.d/site.conf

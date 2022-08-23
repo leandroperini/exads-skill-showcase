@@ -19,7 +19,6 @@ CREATE TABLE IF NOT EXISTS `tv_series_intervals`
     `week_day`     tinyint(1) unsigned NOT NULL,
     `show_time`    TINYINT(2) UNSIGNED NOT NULL,
     PRIMARY KEY (`id`),
-    PRIMARY KEY (`id`),
     KEY `FK_tv_series_tv_series_interval` (`id_tv_series`),
     KEY `week_day` (`week_day`),
     KEY `show_time` (`show_time`),
