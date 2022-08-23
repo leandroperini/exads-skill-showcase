@@ -9,7 +9,7 @@ use Exads\TvSeries\TvSeriesService;
 class TvSeriesController extends AbstractController
 {
 
-    public function handle(RequestInterface $request): mixed
+    public function defaultHandler(RequestInterface $request): mixed
     {
         return $this->sendJsonResponse(
             $this->getTvSeriesService()
@@ -33,6 +33,9 @@ class TvSeriesController extends AbstractController
         );
     }
 
+    /*
+     * Could be a Factory if it was bigger and more complex
+     */
     private function getTvSeriesService(): TvSeriesService
     {
         return new TvSeriesService(getEM());

@@ -10,7 +10,7 @@ use Exads\RequestInterface;
 class PrimesController extends AbstractController
 {
 
-    public function handle(RequestInterface $request): mixed
+    public function defaultHandler(RequestInterface $request): mixed
     {
         $processedNumbers = $this->getNumberService()->findPrimes(1, 100);
 
@@ -28,6 +28,9 @@ class PrimesController extends AbstractController
         return $result;
     }
 
+    /*
+     * Could be a Factory if it was bigger and more complex
+     */
     private function getNumberService(): NumberService
     {
         return new NumberService();

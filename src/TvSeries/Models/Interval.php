@@ -1,15 +1,16 @@
 <?php
 
 
-namespace Exads\TvSeries\Entities;
+namespace Exads\TvSeries\Models;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="tv_series_intervals")
  */
-class Interval
+class Interval implements JsonSerializable
 {
     /**
      * @ORM\ManyToOne(targetEntity="TvSeries")
@@ -67,7 +68,7 @@ class Interval
         return $this->showTime;
     }
 
-    public function __serialize(): array
+    public function jsonSerialize(): array
     {
         return get_object_vars($this);
     }

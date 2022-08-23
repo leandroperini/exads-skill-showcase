@@ -14,6 +14,6 @@ abstract class AbstractController implements ControllerInterface
 
     public function sendJsonResponse(mixed $responseContent)
     {
-        return $this->sendResponse(json_encode($responseContent), 'application/json');
+        return $this->sendResponse(json_encode($responseContent, JSON_THROW_ON_ERROR), 'application/json');
     }
 }

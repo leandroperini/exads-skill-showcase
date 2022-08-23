@@ -1,16 +1,17 @@
 <?php
 
 
-namespace Exads\TvSeries\Entities;
+namespace Exads\TvSeries\Models;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="tv_series")
  */
-class TvSeries
+class TvSeries implements JsonSerializable
 {
     /**
      * @ORM\OneToMany(targetEntity="Interval", mappedBy="TvSeries")
@@ -68,7 +69,7 @@ class TvSeries
         return $this->channel;
     }
 
-    public function __serialize(): array
+    public function jsonSerialize(): array
     {
         return get_object_vars($this);
     }

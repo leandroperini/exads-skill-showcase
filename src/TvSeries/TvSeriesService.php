@@ -5,7 +5,7 @@ namespace Exads\TvSeries;
 
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManager;
-use Exads\TvSeries\Entities\TvSeries;
+use Exads\TvSeries\Models\TvSeries;
 
 class TvSeriesService
 {

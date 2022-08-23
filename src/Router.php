@@ -6,6 +6,7 @@ namespace Exads;
 use Exads\Controllers\AsciiController;
 use Exads\Controllers\ControllerInterface;
 use Exads\Controllers\PrimesController;
+use Exads\Controllers\PromotionsController;
 use Exads\Controllers\TvSeriesController;
 use Exception;
 
@@ -19,6 +20,7 @@ class Router
         $this->get('/ascii', $request, AsciiController::class);
         $this->get('/tv-series', $request, TvSeriesController::class);
         $this->get('/tv-series/now', $request, TvSeriesController::class, 'now');
+        $this->get('/promotions', $request, PromotionsController::class);
 
 
         return $this->response;
@@ -38,9 +40,10 @@ class Router
         string $uri,
         RequestInterface $request,
         string $controllerClass,
-        ?string $handler = null,
+        ?string $handler,
     ): void {
-        $handler = $handler === null ? 'handle' : $handler . 'Handler';
+        $handler ??= 'default';
+        $handler .= 'Handler';
         if ($this->isMatch($method, $uri, $request)) {
             $this->response = $this->processRequest($controllerClass, $request, $handler);
         }

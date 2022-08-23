@@ -10,7 +10,7 @@ use Exads\Text\AsciiService;
 class AsciiController extends AbstractController
 {
 
-    public function handle(RequestInterface $request): mixed
+    public function defaultHandler(RequestInterface $request): mixed
     {
         $first       = ',';
         $last        = '|';
@@ -33,6 +33,9 @@ class AsciiController extends AbstractController
         );
     }
 
+    /*
+     * Could be a Factory if it was bigger and more complex
+     */
     private function getAsciiService(): AsciiService
     {
         return $this->asciiService ??= new AsciiService(new NumberService());
